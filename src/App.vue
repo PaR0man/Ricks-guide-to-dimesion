@@ -3,7 +3,7 @@ import CharactersList from "./components/CharactersList.vue";
 </script>
 
 <template>
-  <h1>Hello World</h1>
+  <h1>Rick's guide to dimension</h1>
   <CharactersList />
 </template>
 
