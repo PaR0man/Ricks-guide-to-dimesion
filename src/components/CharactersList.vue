@@ -8,8 +8,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { CHARACTERS } from "../graphql/queries/characters";
+import type { ICharactersQuery } from "../graphql/queries/types/charactersTypes";
 import CharacterCard from "./CharacterCard.vue";
 
 export default {
@@ -19,7 +20,7 @@ export default {
       variables: {
         page: 1,
       },
-      update: (data) => data.characters.results,
+      update: (data: ICharactersQuery) => data.characters.results,
     },
   },
   components: { CharacterCard },
