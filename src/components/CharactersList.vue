@@ -1,33 +1,68 @@
 <template>
   <div class="characterList__root">
     <CharacterCard
-      v-for="character in characters"
+      v-for="character in charactersList"
       :key="character.id"
       :character="character"
     />
   </div>
+  <div
+    v-intersection="loadMore"
+    :class="{
+      characterList__intersection__none: !Boolean(charactersList.length),
+    }"
+  />
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import { CHARACTERS } from "../graphql/queries/characters";
-import type { ICharactersQuery } from "../graphql/queries/types/charactersTypes";
+import type { ICharacter } from "../graphql/queries/types/charactersTypes";
 import CharacterCard from "./CharacterCard.vue";
 
-export default {
+interface ChraracterListData {
+  currentPage: number;
+  charactersList: ICharacter[];
+}
+
+export default defineComponent({
+  components: { CharacterCard },
+
+  data(): ChraracterListData {
+    return {
+      currentPage: 1,
+      charactersList: [],
+    };
+  },
+
+  methods: {
+    loadMore() {
+      this.currentPage++;
+    },
+  },
+
   apollo: {
     characters: {
       query: CHARACTERS,
-      variables: {
-        page: 1,
+      variables() {
+        return {
+          page: this.currentPage,
+        };
       },
-      update: (data: ICharactersQuery) => data.characters.results,
+
+      result({ data }) {
+        this.charactersList.push(...data.characters.results);
+      },
     },
   },
-  components: { CharacterCard },
-};
+});
 </script>
 
 <style scoped>
+.characterList__intersection__none {
+  display: none;
+}
+
 .characterList__root {
   display: flex;
   justify-content: space-around;

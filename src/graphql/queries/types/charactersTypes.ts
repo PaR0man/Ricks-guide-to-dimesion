@@ -7,10 +7,10 @@ export interface ICharacters {
 }
 
 export interface ICharacter {
-  id: String;
-  image: String;
-  name: String;
-  species: String;
-  status: String;
-  __typename: String;
+  id: string;
+  image: string;
+  name: string;
+  species: string;
+  status: string;
+  __typename: string;
 }
