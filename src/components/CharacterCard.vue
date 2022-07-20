@@ -1,19 +1,27 @@
+<script lang="ts">
+import type { ICharacter } from "@/graphql/queries/types/characterTypes";
+import { defineComponent, type PropType } from "vue";
+
+export default defineComponent({
+  props: {
+    character: {
+      type: Object as PropType<ICharacter>,
+      required: true,
+    },
+  },
+});
+</script>
+
 <template>
   <div class="characterCard__root">
     <img :src="character.image" :alt="character.name" />
-    <h2>{{ character.name }}</h2>
+    <h2 @click="$router.push(`/characters/${character.id}`)">
+      {{ character.name }}
+    </h2>
     <p>{{ character.status }}</p>
     <p>{{ character.species }}</p>
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  props: {
-    character: Object,
-  },
-};
-</script>
 
 <style scoped>
 .characterCard__root {

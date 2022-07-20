@@ -1,23 +1,7 @@
-<template>
-  <div class="characterList__root">
-    <CharacterCard
-      v-for="character in charactersList"
-      :key="character.id"
-      :character="character"
-    />
-  </div>
-  <div
-    v-intersection="loadMore"
-    :class="{
-      characterList__intersection__none: !Boolean(charactersList.length),
-    }"
-  />
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { CHARACTERS } from "../graphql/queries/characters";
-import type { ICharacter } from "../graphql/queries/types/charactersTypes";
+import type { ICharacter } from "../graphql/queries/types/characterTypes";
 import CharacterCard from "./CharacterCard.vue";
 
 interface ChraracterListData {
@@ -57,6 +41,22 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <div class="characterList__root">
+    <CharacterCard
+      v-for="character in charactersList"
+      :key="character.id"
+      :character="character"
+    />
+  </div>
+  <div
+    v-intersection="loadMore"
+    :class="{
+      characterList__intersection__none: !Boolean(charactersList.length),
+    }"
+  />
+</template>
 
 <style scoped>
 .characterList__intersection__none {
