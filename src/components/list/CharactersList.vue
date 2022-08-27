@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CHARACTERS } from "../graphql/queries/characters";
-import type { ICharacter } from "../graphql/queries/types/characterTypes";
-import CharacterCard from "./CharacterCard.vue";
+import { CHARACTERS } from "../../graphql/queries/characters";
+import type { ICharacter } from "../../graphql/queries/types/characterTypes";
+import CharacterCard from "../list/CharacterCard.vue";
 
 interface ChraracterListData {
   currentPage: number;

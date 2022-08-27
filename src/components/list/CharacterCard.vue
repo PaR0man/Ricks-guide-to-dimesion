@@ -14,7 +14,13 @@ export default defineComponent({
 
 <template>
   <div class="characterCard__root">
-    <img :src="character.image" :alt="character.name" />
+    <img
+      :src="
+        character.image ||
+        'https://rickandmortyapi.com/api/character/avatar/66.jpeg'
+      "
+      :alt="character.name"
+    />
     <h2 @click="$router.push(`/characters/${character.id}`)">
       {{ character.name }}
     </h2>
