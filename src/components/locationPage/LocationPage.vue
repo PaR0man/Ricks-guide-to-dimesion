@@ -1,8 +1,10 @@
 <script lang="ts">
+import { defineComponent } from "vue";
+
+import CharacterCard from "../list/CharacterCard.vue";
+
 import { LOCATION } from "@/graphql/queries/location";
 import type { ILocation } from "@/graphql/queries/types/locationTypes";
-import { defineComponent } from "vue";
-import CharacterCard from "../list/CharacterCard.vue";
 
 interface LocationPageData {
   locationData?: ILocation;

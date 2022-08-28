@@ -1,7 +1,8 @@
 <script lang="ts">
+import { defineComponent } from "vue";
+
 import { CHARACTER } from "@/graphql/queries/character";
 import type { ICharacter } from "../../graphql/queries/types/characterTypes";
-import { defineComponent } from "vue";
 
 interface CharacterPageData {
   characterData?: ICharacter;
@@ -60,5 +61,15 @@ export default defineComponent({
     >
       Origin: {{ characterData.origin.name }}
     </h2>
+    <h2>Episodes:</h2>
+    <div>
+      <h3
+        v-for="episode in characterData.episode"
+        :key="episode.id"
+        @click="$router.push(`/episode/${episode.id}`)"
+      >
+        {{ episode.name }}
+      </h3>
+    </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script lang="ts">
-import type { ICharacter } from "@/graphql/queries/types/characterTypes";
 import { defineComponent, type PropType } from "vue";
+
+import type { ICharacter } from "@/graphql/queries/types/characterTypes";
 
 export default defineComponent({
   props: {

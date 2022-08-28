@@ -1,4 +1,5 @@
 import type { ILocation } from "./locationTypes";
+import type { IEpisode } from "./episodeType";
 
 export interface ICharacter {
   __typename: string;
@@ -11,4 +12,5 @@ export interface ICharacter {
   gender: string;
   origin: ILocation;
   location: ILocation;
+  episode: IEpisode[];
 }

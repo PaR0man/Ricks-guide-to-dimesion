@@ -19,6 +19,10 @@ export const CHARACTER = gql`
         name
         dimension
       }
+      episode {
+        id
+        name
+      }
     }
   }
 `;
